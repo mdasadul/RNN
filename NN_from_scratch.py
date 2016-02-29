@@ -71,6 +71,19 @@ def calculate_loss(model):
     data_loss += reg_lambda/2 * (np.sum(np.square(W1)) + np.sum(np.square(W2)))
     return 1./num_examples * data_loss
 
+def iterate_minibatches(inputs, batchsize, shuffle=False):
+    assert len(inputs) == len(targets)
+    if shuffle:
+        indices = np.arange(len(inputs))
+        np.random.shuffle(indices)
+    for start_idx in range(0, len(inputs) - batchsize + 1, batchsize):
+        if shuffle:
+            excerpt = indices[start_idx:start_idx + batchsize]
+        else:
+            excerpt = slice(start_idx, start_idx + batchsize)
+        yield inputs[excerpt], targets[excerpt]
+
+
 # This function learns parameters for the neural network and returns the model.
 # - nn_hdim: Number of nodes in the hidden layer
 # - num_passes: Number of passes through the training data for gradient descent
@@ -123,7 +136,7 @@ def build_model(nn_hdim, num_passes=20000, print_loss=False):
     return model
 
 # Build a model with a 3-dimensional hidden layer
-model = build_model(3, print_loss=True)
+model = build_model(5, print_loss=True)
 
 # Plot the decision boundary
 plot_decision_boundary(lambda x: predict(model, x))

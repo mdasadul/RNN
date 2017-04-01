@@ -1,6 +1,8 @@
 
 ## RNN
+```
 h(t) = tanh(Wxh*X+ Whh*h(t-1) +bh)
+```
 y = Wy*h(t) +by
 Loss L = -log(exp(y)/sum(exp(y)))
 

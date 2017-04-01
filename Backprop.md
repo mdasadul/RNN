@@ -1,8 +1,8 @@
 
-## RNNxvcc
-```
-h(t) = tanh(W_{xh}*X+ W_{hh}*h(t-1) +b_h)
-```
+## RNN
+
+h(t) = tanh(W<sub>xh</sub>*X+ W<sub>hh</sub>*h(t-1) +b<sub>h</sub>)
+
 y = Wy*h(t) +by
 Loss L = -log(exp(y)/sum(exp(y)))
 
@@ -14,7 +14,7 @@ so L = -log(p)
 dL/dy = -(1/p)*dp/dy
       = -(1/p)* (sum(exp(y))*exp(y)-exp(y)*exp(y))/(sum(exp(y)))^2
       =-(1/p)(p-p^2)
-      =p-1
+      =p-1isdsfiiiiiisds
       
 dL/dWy =dL/dy*dy/dWy
        =(p-1)*h(t-1)

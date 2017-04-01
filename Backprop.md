@@ -1,7 +1,7 @@
 
-## RNN
+## RNNxvcc
 ```
-h(t) = tanh(Wxh*X+ Whh*h(t-1) +bh)
+h(t) = tanh(W_{xh}*X+ W_{hh}*h(t-1) +b_h)
 ```
 y = Wy*h(t) +by
 Loss L = -log(exp(y)/sum(exp(y)))
